@@ -1,0 +1,129 @@
+{% load static%}
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'portfolio.css'%}">
+    <title>Commu</title>
+</head>
+<body>
+    <div id="wrap">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{%url 'home'%}">Dingdong</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{%url 'write'%}">Write <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">redefine</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+        <header id="header1" >
+            <img src='{% static 'dingdongKor.png'%}' alt=딩동로고 class=logoimg height=40px>
+        </header>
+        <br>
+        <header id="header2">
+            <h2>커뮤니티</h2>
+        </header>
+        <br>
+        <section>
+            <div class="container">
+                <div class="box">
+                <br>
+                    <p><span>[공지]</span> 딩동 커뮤니티 이용안내</p><br>
+                    <p>2020.07.28</p>
+                <br> 
+                </div>
+                <hr>
+                {% for portfolio in portfolios.all %}
+                	        <img class="card-img-top" src="{{ portfolio.image.url }}" alt=" Card image cap">
+	        <div class="card-body">
+	          <h4>{{ portfolio.title }}</h4>
+	          <p class="card-text">{{ portfolio.description }}</p>
+                <div class="box">
+                <br>
+                    <p>회기동 동물약국 이용해보셨나요?</p><br>
+                    <p>2020.08.01</p>
+                    <div class="type">동물약국</div>
+                <br>
+                </div>
+                {% endfor %}
+                <br>
+                <hr>
+                <div class="box">
+                <br>
+                    <p>소형견 하네스 무료나눔해요~ </p><br>
+                    <p>2020.08.01</p>
+                    <div class="type">무료나눔</div>
+                <br>
+                </div>
+                <br>
+                <hr>
+                <div class="box">
+                <br>
+                    <p>중랑천에서 같이 아이들 산책시키실 분 계신가요?</p><br>
+                    <p>2020.08.01</p>
+                    <div class="type">산책</div>
+                <br>    
+                </div>
+                <br>
+                <hr>
+            </div>
+        </section>
+    </div>
+
+    <div class="album py-5 bg-light">
+  <div class="container">
+	  <div class="row">
+	  {% for portfolio in portfolios.all %}
+	    <div class="col-md-4">
+	      <div class="card mb-4 shadow-sm">
+	        <img class="card-img-top" src="{{ portfolio.image.url }}" alt=" Card image cap">
+	        <div class="card-body">
+	          <h4>{{ portfolio.title }}</h4>
+	          <p class="card-text">{{ portfolio.description }}</p>
+	        </div>
+	      </div>
+	    </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
