@@ -80,4 +80,17 @@
 </div><!--이부분 이거 각 id에 맞는 키 페이지를 긁어온다는건 알겠는데.. 왜 url 페이지 뒤에 저렇게씀?? 양식?? -->
 <a href="{% url 'delete' blog_detail.id%}"><input type = "button" value ="삭제하기"></a>
 <a href="{% url 'update' blog_detail.id%}"><input type = "button" value ="수정하기"></a>
+
+ <form method="post" action="{% url 'create_comment' blog_detail.id%}">
+        {%csrf_token%}
+        {{comment_form}}
+        <input type="submit">
+    </form>
+
+    {% for i in blog_detail.comment_set.all %}
+
+    <p>-> {{i}}</p>
+    <hr>
+    {%endfor%}
+
 </body>

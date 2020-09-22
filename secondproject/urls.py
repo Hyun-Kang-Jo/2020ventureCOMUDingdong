@@ -31,4 +31,5 @@ urlpatterns = [
     path('update/<int:blog_id>/', blog.views.update, name="update"),
     path('updateSend/<int:blog_id>/', blog.views.updateSend, name ="updateSend"),
     path('portfolio/', portfolio.views.portfolio, name="portfolio"),
+    path('blog/create_comment/<int:blog_id>,',blog.views.create_comment, name="create_comment")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
