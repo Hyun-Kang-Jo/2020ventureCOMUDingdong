@@ -80,3 +80,8 @@ def create_comment(request, blog_id):
         temp_form.save() #저장!
     
     return redirect('detail', blog_id) #redirect('애칭', parameter) 해주면 google.com/1 이런식으로 뒤에 붙는 값을 지정해줄수있다.
+
+def delete_comment(request, i_id, blog_id):
+    mycom = Comment.objects.get(id = i_id)#이걸 해놨기에 뭐든 상관없는거!
+    mycom.delete()
+    return redirect('detail', blog_id)

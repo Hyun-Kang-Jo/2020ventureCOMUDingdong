@@ -89,8 +89,8 @@
 
     {% for i in blog_detail.comment_set.all %}
 
-    <p>-> {{i}}</p>
-    <hr>
+    <p>-> {{i}} <a href="{% url 'delete_comment' i.id blog_detail.id %}">삭제</a></p><!--pk값이 blog.id인 object를 blog_detail로 가져와서 이렇게 써야함 위에도-->
+    <hr><!--form action 같은 경우는 데이터를 넘길 때 사용하고 이런 지우는거 같은경우엔 url만 사용해도 충분하다.-->
     {%endfor%}
 
 </body>
