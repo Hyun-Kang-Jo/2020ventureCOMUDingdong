@@ -30,8 +30,9 @@
         <a class="nav-link" href="{%url 'write'%}">Write <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">redefine</a>
+        <a class="nav-link" href="{%url 'portfolio'%}">notice</a>
       </li>
+      <!--
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown
@@ -43,14 +44,39 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
+      -->
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">login plz</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <form>
+  <div class="form-row align-items-center">
+    <div class="col-sm-3 my-1">
+      <label class="sr-only" for="inlineFormInputName">Name</label>
+      <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
+    </div>
+    <div class="col-sm-3 my-1">
+      <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+      </div>
+    </div>
+    <div class="col-auto my-1">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+        <label class="form-check-label" for="autoSizingCheck2">
+          Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
   </div>
 </nav>
         <header id="header1" >
@@ -58,7 +84,7 @@
         </header>
         <br>
         <header id="header2">
-            <h2>커뮤니티</h2>
+            <h2>notice</h2>
         </header>
         <br>
         <section>
@@ -66,39 +92,27 @@
                 <div class="box">
                 <br>
                     <p><span>[공지]</span> 딩동 커뮤니티 이용안내</p><br>
-                    <p>2020.07.28</p>
+                    <p>2020.10.01</p>
                 <br> 
                 </div>
-                <hr>
-                {% for portfolio in portfolios.all %}
-                	        <img class="card-img-top" src="{{ portfolio.image.url }}" alt=" Card image cap">
-	        <div class="card-body">
-	          <h4>{{ portfolio.title }}</h4>
-	          <p class="card-text">{{ portfolio.description }}</p>
-                <div class="box">
-                <br>
-                    <p>회기동 동물약국 이용해보셨나요?</p><br>
-                    <p>2020.08.01</p>
-                    <div class="type">동물약국</div>
-                <br>
-                </div>
-                {% endfor %}
                 <br>
                 <hr>
                 <div class="box">
                 <br>
-                    <p>소형견 하네스 무료나눔해요~ </p><br>
-                    <p>2020.08.01</p>
-                    <div class="type">무료나눔</div>
+                    <p>공지2</p><br>
+                    <p>2020.10.01</p>
+                    <p>서비스 게시합니다! 주의점은 </p>
+                    <div class="type">공지</div>
                 <br>
                 </div>
                 <br>
                 <hr>
                 <div class="box">
                 <br>
-                    <p>중랑천에서 같이 아이들 산책시키실 분 계신가요?</p><br>
-                    <p>2020.08.01</p>
-                    <div class="type">산책</div>
+                    <p>공지3</p><br>
+                    <p>2020.10.01</p>
+                    <p>서비스 핵심</p>
+                    <div class="type">공지</div>
                 <br>    
                 </div>
                 <br>
@@ -107,23 +121,6 @@
         </section>
     </div>
 
-    <div class="album py-5 bg-light">
-  <div class="container">
-	  <div class="row">
-	  {% for portfolio in portfolios.all %}
-	    <div class="col-md-4">
-	      <div class="card mb-4 shadow-sm">
-	        <img class="card-img-top" src="{{ portfolio.image.url }}" alt=" Card image cap">
-	        <div class="card-body">
-	          <h4>{{ portfolio.title }}</h4>
-	          <p class="card-text">{{ portfolio.description }}</p>
-	        </div>
-	      </div>
-	    </div>
-    {% endfor %}
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
