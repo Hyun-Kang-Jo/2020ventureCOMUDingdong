@@ -71,7 +71,9 @@
 <div class = "container jumbotron">
     <h1>{{blog_detail.title}}</h1>
     <p>{{blog_detail.pub_date}}</p>
-    <p><img class="card-img-top" src="{{ blog_detail.image.url }}" alt=" Card image cap"></p>
+    <p>{% for photo in blog_detail.photo_set.all%}
+    <img class="card-img-top" src="{{ photo.image.url }}" alt=" Card image cap"><br>
+    {% endfor %}</p><!--blog 와 photo의 1대 다 관계를 맞추어주기 위해서 새로만든 모델인 photo와 쿼리셋문법인 그 set을 가져와서 설정-->
     <p>{{blog_detail.description}}</p>
     <p>{{blog_detail.body}}</p>
     <a href="{%url 'home'%}">돌아가기</a>

@@ -5,7 +5,6 @@ from django.db import models
 class Blog(models.Model):
     title = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
-    image = models.ImageField(upload_to='images/',blank=True,null=True)
     description = models.CharField(max_length=500,default='')
     body = models.TextField()
 
@@ -14,3 +13,7 @@ class Blog(models.Model):
 
     def summary(self):
         return self.body[:100]
+
+class Photo(models.Model):
+    post = models.ForeignKey(Blog, on_delete = models.CASCADE, null=True)
+    image = models.ImageField(upload_to='images/',blank=True,null=True)

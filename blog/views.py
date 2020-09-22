@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 
-from .models import Blog
+from .models import Blog, Photo
 
 # Create your views here.
 
@@ -27,14 +27,21 @@ def write(request):
     return render(request, 'write.html')
 
 def send(request):
-    blog = Blog()
-    blog.title = request.POST['title']
-    blog.body = request.POST['body']
-    blog.pub_date = timezone.datetime.now()
-    blog.image = request.FILES['image']
-    blog.description = request.POST['description']
-    blog.save()
-    return redirect('/blog/' + str(blog.id))
+    if(request.method == 'POST'):
+        blog = Blog()
+        blog.title = request.POST['title']
+        blog.body = request.POST['body']
+        blog.pub_date = timezone.datetime.now()
+        blog.description = request.POST['description']
+        blog.save()
+        for img in request.FILES.getlist('image'):
+            photo = Photo()
+            photo.post = blog
+            photo.image = img
+            photo.save()
+        return redirect('/blog/' + str(blog.id))
+    else:
+        return render(request, 'new.html')
 
 def delete(request, blog_id):
     blog_delete = get_object_or_404(Blog, pk=blog_id)
